@@ -1,0 +1,102 @@
+.banner-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1)),
+    url(../../assets/images/banner.jpg) no-repeat center center;
+  background-size: cover;
+  height: 600px;
+  flex-direction: column;
+  margin-bottom: 40px;
+  .banner-first {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      @media (max-width: 768px) {
+        font-size: 20px;
+      }
+      color: #fff !important;
+      p {
+        text-shadow: 1px 1px 1px #333;
+      }
+    }
+    .search {
+      width: fit-content;
+      padding: 6px 16px 6px 8px;
+
+      border-radius: 24px;
+      background-color: #f7d800;
+
+      input {
+        font-size: 16px;
+        outline: none;
+        border: none;
+        padding: 6px 80px 6px 0;
+        background-color: transparent;
+        font-weight: lighter;
+      }
+      i {
+        font-size: 14px;
+        padding: 0 12px;
+        cursor: pointer;
+      }
+    }
+  }
+  .banner-second-bg {
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 1)
+    );
+    .banner-second {
+      flex: 1;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100vw;
+      @media (min-width: 768px) {
+        flex-wrap: unset;
+      }
+      .thumbnail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 4px;
+        width: 120px;
+        @media (min-width: 768px) {
+          width: 88px;
+        }
+        .option {
+          .img-thumbnail {
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            border-radius: 50%;
+            img {
+              height: 35px;
+              width: 35px;
+              object-fit: contain;
+            }
+          }
+        }
+        .caption {
+          font-size: 18px;
+          &:hover {
+            color: #69c3d3;
+          }
+          @media (max-width: 768px) {
+            font-size: 12px;
+          }
+          @media (min-width: 768px) and (max-width: 992px) {
+            font-size: 14px;
+          }
+          font-weight: 500;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

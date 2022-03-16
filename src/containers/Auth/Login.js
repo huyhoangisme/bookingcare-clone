@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import './Login.scss';
-
+import { handleLoginApi } from '../../services/userService'
 class Login extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.btnLogin = React.createRef();
-    // }
-    state = {
-        username: '',
-        password: '',
-        isShowPassword: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: '',
+            isShowPassword: false,
+            messageError: '',
+        }
     }
+
     handleChangeUsername = (event) => {
         this.setState({
             username: event.target.value,
@@ -28,6 +29,33 @@ class Login extends Component {
         this.setState({
             isShowPassword: !this.state.isShowPassword,
         })
+    }
+    handleLogin = async () => {
+        this.setState({
+            messageError: '',
+        })
+        let { username, password } = this.state;
+        try {
+            const data = await handleLoginApi(username, password)
+            if (data.data) {
+                if (parseInt(data.errCode) !== 0) {
+                    this.setState({
+                        messageError: data.errorMessage,
+                    })
+                }
+                if (parseInt(data.errCode) === 0) {
+                    this.props.userLoginSuccess(data.data)
+                }
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        messageError: error.response.data.errorMessage,
+                    })
+                }
+            }
+        }
     }
     render() {
 
@@ -57,8 +85,13 @@ class Login extends Component {
                                     ></i>
                                 </div>
                             </div>
+                            <div className="col-12 text-error">
+                                {this.state.messageError}
+                            </div>
                             <div className=" col-12 ">
-                                <button className="btn-login input-login">Login</button>
+                                <button className="btn-login input-login" onClick={() => this.handleLogin()}>
+                                    Login
+                                </button>
                             </div>
                             <div className=" col-12 text-forgot">Forgot your password</div>
                             <div className="text-center mt-2 mb-2">Or login with:</div>
@@ -83,8 +116,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+
+        // userLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };
 

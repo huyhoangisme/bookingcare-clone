@@ -18,7 +18,8 @@ import System from '../routes/System';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
-
+import HomePage from './HomePage/HomePage.js'
+import CustomScrollbars from '../components/CustomScrollbars'
 class App extends Component {
 
     handlePersistorState = () => {
@@ -44,15 +45,17 @@ class App extends Component {
             <Fragment>
                 <Router history={history}>
                     <div className="main-container">
-                        <ConfirmModal />
                         {this.props.isLoggedIn && <Header />}
 
                         <span className="content-container">
-                            <Switch>
-                                <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                            </Switch>
+                            <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
+                                <Switch>
+                                    <Route path={path.HOME} exact component={(Home)} />
+                                    <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={path.HOMEPAGE} component={HomePage} />
+                                </Switch>
+                            </CustomScrollbars>
                         </span>
 
                         <ToastContainer
@@ -63,7 +66,7 @@ class App extends Component {
                         />
                     </div>
                 </Router>
-            </Fragment>
+            </Fragment >
         )
     }
 }
@@ -71,7 +74,7 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         started: state.app.started,
-        isLoggedIn: state.admin.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 
