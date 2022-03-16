@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import HomeHeader from '../Header/HomeHeader';
+import './HomePage.scss';
 import Banner from './Banner';
 import Speciality from './Section/Speciality';
+import MedicalFacility from '../HomePage/Section/MedicalFacility';
+import OutsandingDoctor from '../HomePage/Section/OutsandingDoctor';
 class HomePage extends Component {
 
     render() {
@@ -12,7 +15,9 @@ class HomePage extends Component {
                 <HomeHeader />
                 <Banner />
                 <Speciality />
-                <div style={{ height: "200px" }}></div>
+                <MedicalFacility />
+                <OutsandingDoctor />
+                <div style={{ height: "400px" }}></div>
             </>
         )
     }

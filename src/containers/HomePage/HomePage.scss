@@ -1,0 +1,161 @@
+.section-container {
+  height: 340px;
+  padding: 12px 40px;
+  .section-header {
+    display: flex;
+    padding: 25px 5px;
+    justify-content: space-between;
+    align-items: center;
+    //   align-items: center;
+    .text-title {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .text-button {
+      outline: none;
+      border: none;
+      font-size: 12px;
+      padding: 9px;
+      color: #282e41;
+      background-color: #ebebeb;
+      text-transform: uppercase;
+      &:hover {
+        background: #f7d800;
+        color: #fff;
+      }
+    }
+  }
+  .slider-content {
+    // width: 100%;
+    // height: 100%;
+    .slick-slider {
+      .slider-thumbnail {
+        height: 100%;
+        padding: 0 5px;
+        .image {
+          background: url(../../assets/images/section/tieu-hoa.jpg) no-repeat
+            center center;
+          background-size: cover;
+          height: 180px;
+        }
+        .text-content {
+          font-size: 16px;
+          font-weight: lighter;
+          text-align: start;
+          padding: 5px 0;
+        }
+      }
+      .slick-next:before {
+        content: "→";
+        font-family: "Font Awesome 5 Free";
+        color: #ce4611 !important;
+        background: transparent;
+        font-size: 28px;
+        text-align: center;
+      }
+      .slick-prev:before {
+        content: "←";
+        font-family: "Font Awesome 5 Free";
+        color: #ce4611 !important;
+        background: transparent;
+        font-size: 28px;
+        text-align: center;
+      }
+      .slick-next,
+      .slick-prev {
+        border: 2px solid #d7d7d7;
+        height: 42px;
+        width: 40px;
+        z-index: 1;
+        top: 50%;
+        background: transparent;
+      }
+    }
+  }
+}
+// responsive smartphone
+
+@media (max-width: 576px) {
+  .section-container {
+    padding: 4px;
+    height: 260px;
+    .section-header {
+      .text-button {
+        padding: 8px !important;
+      }
+      .text-title {
+        font-size: 16px !important;
+      }
+    }
+    .slider-content {
+      .slick-slider {
+        .slider-thumbnail {
+          .image {
+            height: 80px;
+          }
+          .text-content {
+            padding: 4px 0;
+            font-size: 13px;
+          }
+        }
+        .slick-next:before,
+        .slick-prev:before {
+          content: unset;
+
+          font-size: unset;
+        }
+        .slick-prev {
+          left: 0;
+          border: unset;
+        }
+        .slick-next {
+          right: 0;
+          border: unset;
+        }
+        .slick-next,
+        .slick-prev {
+          height: 0;
+        }
+      }
+    }
+  }
+}
+// response ipad
+@media (min-width: 576px) and (max-width: 992px) {
+  .section-container {
+    padding: 0 40px;
+    height: 300px;
+    .section-header {
+      .text-title {
+        font-size: 16px;
+      }
+      .text-button {
+        color: #282e41;
+        padding: 10px 15px !important;
+      }
+    }
+    .slider-content {
+      .slick-slider {
+        .slider-thumbnail {
+          .image {
+            height: 120px;
+          }
+          .text-content {
+            padding: 4px 0;
+            font-size: 13px;
+          }
+        }
+        .slick-prev {
+          left: -12px;
+        }
+        .slick-next {
+          right: -12px;
+        }
+        .slick-next,
+        .slick-prev {
+          top: 60%;
+        }
+      }
+    }
+  }
+}
