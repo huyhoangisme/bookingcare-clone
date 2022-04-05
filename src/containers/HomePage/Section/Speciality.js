@@ -24,17 +24,17 @@ class Speciality extends React.Component {
     }
     render() {
         let { windowWidth } = this.state;
-        let widthScreen = windowWidth > 768 ? 4 : 3;
+        let widthScreen = windowWidth > 768 ? 4 : 2.5;
         let settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: widthScreen,
             slidesToScroll: 1
         }
         return (
             <div className="bg-speciality" >
-                <div className="container-xl section-container">
+                <div className="container-lg section-container">
                     <div className="section-header">
                         <h2 className="text-title">Bác sĩ từ xa qua Video</h2>
                         <button className="text-button">Xem thêm</button>

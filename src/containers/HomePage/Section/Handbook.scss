@@ -1,0 +1,48 @@
+.bg-handbook {
+  background-color: #f5f5f5;
+  margin-top: 40px;
+  .slider-content {
+    .slider-handbook {
+      //   padding: 0 5px;
+      display: flex !important;
+      .image {
+        flex: 1;
+      }
+      .text-content {
+        flex: 1;
+        color: #333333;
+        font-size: 18px;
+        font-weight: bold !important;
+      }
+    }
+  }
+}
+// responsive smartphone
+
+@media (max-width: 576px) {
+  .bg-handbook {
+    margin-top: 75px;
+    .slider-content {
+      .slider-handbook {
+        display: block !important;
+        .image {
+          height: 120px !important;
+        }
+        .text-content {
+          padding: 10px 0 !important;
+
+          font-size: 15px !important;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 576px) and (max-width: 992px) {
+  // .section-header {
+
+  // }
+  .text-content {
+    font-weight: bold !important;
+    font-size: 16px !important;
+  }
+}

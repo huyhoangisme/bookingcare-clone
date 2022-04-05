@@ -36,7 +36,8 @@ class Login extends Component {
         })
         let { username, password } = this.state;
         try {
-            const data = await handleLoginApi(username, password)
+            const data = await handleLoginApi(username, password);
+            console.log("data login", data);
             if (data.data) {
                 if (parseInt(data.errCode) !== 0) {
                     this.setState({
@@ -109,7 +110,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        lang: state.app.language
+        lang: state.app.language,
     };
 };
 

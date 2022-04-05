@@ -7,6 +7,8 @@ import Banner from './Banner';
 import Speciality from './Section/Speciality';
 import MedicalFacility from '../HomePage/Section/MedicalFacility';
 import OutsandingDoctor from '../HomePage/Section/OutsandingDoctor';
+import Handbook from './Section/Handbook';
+import Footer from '../HomePage/Footer';
 class HomePage extends Component {
 
     render() {
@@ -17,7 +19,9 @@ class HomePage extends Component {
                 <Speciality />
                 <MedicalFacility />
                 <OutsandingDoctor />
-                <div style={{ height: "400px" }}></div>
+                <Handbook />
+                <Footer />
+                <div style={{ height: "200px" }}></div>
             </>
         )
     }

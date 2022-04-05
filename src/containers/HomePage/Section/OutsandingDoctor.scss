@@ -3,7 +3,7 @@
   .border-images {
     padding: 0 4px;
     .slider-thumbnail {
-      padding: 24px !important;
+      padding: 12px 24px !important;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -12,8 +12,6 @@
       border: 1px solid #eee;
       height: 240px !important;
       .image-doctor {
-        background: url(../../../assets//images/section/doctor/bshung.jpg)
-          no-repeat center center;
         background-size: cover;
         border-radius: 50%;
         height: 120px;
@@ -26,7 +24,7 @@
         // font-weight: lighter;
       }
       .text-speciality {
-        font-size: 13px;
+        font-size: 14px !important;
         color: #555555;
       }
     }
@@ -39,5 +37,13 @@
       height: 80px !important;
       width: 80px !important;
     }
+  }
+}
+@media (min-width: 576px) and (max-width: 992px) {
+  .image-doctor {
+    margin-bottom: 0 !important;
+  }
+  .des-doctor {
+    padding-top: 10px;
   }
 }

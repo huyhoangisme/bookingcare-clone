@@ -1,0 +1,20 @@
+.form-container {
+  width: 720px;
+  .image-preview-container {
+    .image-upload {
+      background: #ddd;
+      padding: 6px 10px;
+      margin-bottom: 4px;
+      cursor: pointer;
+    }
+    .preview-image {
+      border: 1px solid #ddd;
+      height: 60px;
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      cursor: pointer;
+    }
+  }
+}
