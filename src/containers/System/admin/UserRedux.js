@@ -318,7 +318,7 @@ class UserRedux extends Component {
                     stateFromParent={this.handleEditUser}
                     action={this.state.action}
                 />
-                <div style={{ height: '400px' }}></div>
+                <div style={{ height: '30px' }}></div>
             </>
         )
 

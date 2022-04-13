@@ -70,6 +70,9 @@
         top: 50%;
         background: transparent;
       }
+      .slick-disabled {
+        display: none !important;
+      }
     }
   }
 }

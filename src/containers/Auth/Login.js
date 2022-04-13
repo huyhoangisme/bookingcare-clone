@@ -37,7 +37,6 @@ class Login extends Component {
         let { username, password } = this.state;
         try {
             const data = await handleLoginApi(username, password);
-            console.log("data login", data);
             if (data.data) {
                 if (parseInt(data.errCode) !== 0) {
                     this.setState({
@@ -58,11 +57,16 @@ class Login extends Component {
             }
         }
     }
+    handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            this.handleLogin()
+        }
+    }
     render() {
 
         return (
             <>
-                <div className="login-background">
+                <div className="login-background" >
                     <div className="login-container">
                         <div className="login-content row">
                             <h2 className="col-12 login-text">Login</h2>
@@ -71,6 +75,7 @@ class Login extends Component {
                                 <input type="text" className="form-control "
                                     placeholder="Enter your username"
                                     value={this.state.username} onChange={(event) => this.handleChangeUsername(event)}
+                                    onKeyDown={(event) => this.handleKeyPress(event)}
                                 />
 
                             </div>
@@ -80,6 +85,7 @@ class Login extends Component {
                                     <input type={this.state.isShowPassword ? 'text' : 'password'} className="form-control"
                                         placeholder="Enter your password"
                                         value={this.state.password} onChange={(event) => this.handleChangePassword(event)}
+                                        onKeyDown={(event) => this.handleKeyPress(event)}
                                     />
                                     <i className={this.state.isShowPassword ? 'far fa-eye-slash' : 'far fa-eye'}
                                         onClick={() => this.handleShowHidePassword()}
@@ -90,7 +96,9 @@ class Login extends Component {
                                 {this.state.messageError}
                             </div>
                             <div className=" col-12 ">
-                                <button className="btn-login input-login" onClick={() => this.handleLogin()}>
+                                <button className="btn-login input-login" onClick={() => this.handleLogin()}
+
+                                >
                                     Login
                                 </button>
                             </div>
@@ -117,7 +125,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-
         // userLoginFail: () => dispatch(actions.adminLoginFail()),
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };

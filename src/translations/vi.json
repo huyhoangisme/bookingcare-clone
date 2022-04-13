@@ -31,10 +31,13 @@
         "userpass-wrong": "Sai tên đăng nhập hoặc mật khẩu!"
     },
     "menu": {
+        "dashboard":{
+            "home":"Trang chủ"
+        },
         "admin": {
             "manage-user": "Người dùng",
-            "redux-manage": "CRUD redux",
-            "react-manage": "CRUD react",
+            "redux-manage": "Quản lí người dùng (redux)",
+            "react-manage": "Quản lí người dùng",
             "doctor-manage": "Quản trị bác sĩ",
             "admin-manage": "Quản lý admin",
             "doctor": "Bác sĩ",
@@ -43,7 +46,12 @@
             "specialty":"Chuyên khoa",
             "specialty-manage":"Quản lý chuyên khoa",
            "hanbook":"Cẩm nang",
-           "hanbook-manage":"Quản lý cẩm nang"
+           "hanbook-manage":"Quản lý cẩm nang",
+           "schedule-doctor":"Quản lí lịch khám bệnh cho bác sĩ"
+        },
+        "doctor":{
+            "manage-doctor":"Quản lí bác sĩ",
+            "doctor-schedule":"Quản lí lịch khám bác sĩ"
         }
     },
     "form":{

@@ -2,7 +2,9 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     topDoctor: [],
-    isLoading: false
+    isLoading: false,
+    allDoctors: [],
+    detailDoctor: {}
 }
 
 const doctorReducer = (state = initialState, action) => {
@@ -26,6 +28,33 @@ const doctorReducer = (state = initialState, action) => {
             return {
                 ...state,
 
+            }
+        case actionTypes.FETCH_ALL_DOCTOR_SUCCESS:
+            state.allDoctors = action.allDoctors;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_DOCTOR_FAILED:
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_CREATE_DETAIL_SUCCESS:
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_CREATE_DETAIL_FAILED:
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_DETAIL_DOCTOR_SUCCESS:
+            console.log("success", action)
+            state.detailDoctor = action.detailDoctor;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_DETAIL_DOCTOR_FAILED:
+            return {
+                ...state,
             }
         default:
             return state;

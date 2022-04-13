@@ -14,11 +14,11 @@ class Footer extends React.Component {
                         <div className="address">
                             <p>Công ty Cổ phần Công nghệ BookingCare</p>
                             <div className="map">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i className="fas fa-map-marker-alt"></i>
                                 <span>28 Thành Thái, Dịch Vọng, Cầu Giấy, Hà Nội</span>
                             </div>
                             <div className="map">
-                                <i class="fas fa-check"></i>
+                                <i className="fas fa-check"></i>
                                 <span>ĐKKD số: 0106790291. Sở KHĐT Hà Nội cấp ngày 16/03/2015</span>
                             </div>
 

@@ -1,4 +1,7 @@
 .homepage-header-container {
+  &.container {
+    padding: 16px 8px;
+  }
   padding: 12px 8px;
   .header-content {
     display: flex;
@@ -68,6 +71,53 @@
           &.active {
             opacity: 1;
             color: #e0dd0a;
+          }
+        }
+      }
+      .drop-down {
+        i {
+          font-size: 40px;
+          padding: 0 20px;
+          color: #6c757d;
+        }
+        .group-drop-down {
+          position: fixed;
+          z-index: 1000;
+          top: 70px;
+          right: 88px;
+          display: none;
+          &.active {
+            display: block;
+          }
+          .group-drop {
+            border: 1px solid #91ad41;
+            padding: 12px;
+            width: 200px;
+            list-style: none;
+            border-radius: 10px;
+            background: #fff;
+            font-family: "Quicksand", sans-serif;
+            .account,
+            .role,
+            .logout {
+              text-align: center;
+              font-size: 14px;
+              padding: 7px 0;
+              font-weight: 300;
+              border: 1px solid #ccc;
+              border-radius: 20px;
+              color: white;
+              margin-bottom: 4px;
+              background-image: -webkit-linear-gradient(
+                35deg,
+                #91ad41 0%,
+                #ff8a6c 100%
+              ) !important;
+              cursor: pointer;
+              &:hover {
+                background: #91ad41 !important;
+              }
+            }
           }
         }
       }

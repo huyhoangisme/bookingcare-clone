@@ -7,12 +7,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { LANGUAGES } from '../../../utils'
+import { withRouter } from 'react-router'
 class OutsandingDoctor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             windowWidth: window.innerWidth,
-            topDoctors: []
+            topDoctors: [],
+            isHeader: false,
         };
     }
 
@@ -34,6 +36,12 @@ class OutsandingDoctor extends React.Component {
     componentWillUnmount() {
         window.addEventListener("resize", this.handleResize);
     }
+    handleRedrictPage = (item) => {
+        this.setState({
+            isHeader: true
+        })
+        this.props.history.push(`doctor/detail/${item.id}`);
+    }
     render() {
         let { windowWidth } = this.state;
         let widthScreen = windowWidth > 576 ? 4 : 2;
@@ -42,7 +50,10 @@ class OutsandingDoctor extends React.Component {
             infinite: false,
             speed: 500,
             slidesToShow: widthScreen,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 8000,
+            pauseOnHover: true
         }
         let { topDoctors } = this.state;
         topDoctors = topDoctors.concat(topDoctors)
@@ -65,7 +76,9 @@ class OutsandingDoctor extends React.Component {
                                         let nameVi = `${item.positionData.valueVi}, ${item.firstName} ${item.lastName}`;
                                         let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                         return (
-                                            <div className="border-images" key={index}>
+                                            <div className="border-images" key={index}
+                                                onClick={() => this.handleRedrictPage(item)}
+                                            >
                                                 <div className="slider-thumbnail">
                                                     <div className="image-doctor"
                                                         style={{ backgroundImage: `url(${imageBase64})` }}
@@ -102,4 +115,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutsandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutsandingDoctor));

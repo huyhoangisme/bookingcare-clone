@@ -2,22 +2,75 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl';
 import './HomeHeader.scss';
 import { connect } from 'react-redux';
+import * as actions from "../../store/actions";
+import { Route, Switch } from 'react-router-dom';
 import { LANGUAGES } from '../../utils/constant'
 import { changeLanguage } from '../../store/actions'
-class HomeHeader extends React.Component {
+import { withRouter } from 'react-router-dom';
+import { path } from '../../utils'
 
+import ScheduleDoctor from '../../containers/System/doctor/ManageDoctorSchedule'
+class HomeHeader extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isDropDown: false,
+            roleID: 'R3'
+        }
+    }
+    componentDidMount() {
+        // console.log("ahahhahahahha", this.props.userInfo)
+    }
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevProps.userInfo && prevProps.userInfo.roleId) {
+            if (prevProps.userInfo.roleId !== this.props.userInfo.roleId) {
+                this.setState({
+                    roleID: this.props.userInfo.roleId
+                }, () => {
+                    console.log("chage", this.state.roleID)
+                })
+            }
+        }
+    }
+    componentWillUnmount = () => {
+        console.log("ahahhahahahha un mount", this.props.userInfo)
+    }
     handleChangeLanguage = (language) => {
         // GOI PROPs redux de thay doi ngon ngu
         this.props.changeLanguagueApp(language);
     }
+    handleBackHomePage = () => {
+        this.props.history.push('/home');
+    }
+    setIsShown = () => {
+        this.setState({ isDropDown: !this.state.isDropDown, roleID: this.props.userInfo.roleId });
+    }
+    handleLogOut = () => {
+        this.props.processLogout();
+        this.props.history.push('/login');
+    }
+    handleRedirectDashBoard = () => {
+        let { roleID } = this.state;
+        if (roleID && roleID === "R1") {
+            this.props.history.push('/system/user-manage')
+        } else if (roleID && roleID === "R2") {
+            this.props.history.push('/system/doctor/manage-doctor')
+        }
+    }
     render() {
+        let { roleID } = this.state;
+        // console.log('aaaks ka', roleID);
+        // const { processLogout } = this.props;
         return (
             <>
                 <div className="homepage-header-container container">
                     <div className="header-content">
                         <div className="left-header">
                             <i className="fas fa-bars"></i>
-                            <div className="image-logo"></div>
+                            <div className="image-logo"
+                                onClick={() => this.handleBackHomePage()}
+                            ></div>
                         </div>
                         <div className="center-header d-none d-sm-none d-md-none d-lg-block d-lg-flex">
                             <div className="child">
@@ -48,6 +101,23 @@ class HomeHeader extends React.Component {
                                     <span onClick={() => this.handleChangeLanguage(LANGUAGES.EN)}>EN</span>
                                 </span>
                             </div>
+                            <div className="drop-down">
+                                <i className="fas fa-user-circle" onMouseEnter={() => this.setIsShown()}
+                                ></i>
+                                <div className={this.state.isDropDown ? 'group-drop-down active' : 'group-drop-down'}
+                                    onMouseLeave={() => this.setIsShown()}
+                                >
+                                    <div className="group-drop">
+                                        <div className="account">Tài khoản</div>
+                                        <div className={roleID && (roleID === 'R1' || roleID === 'R2') ? 'role' : 'role d-none'}
+                                            onClick={() => this.handleRedirectDashBoard()}
+                                        >
+                                            {roleID && roleID === 'R1' ? 'Quản lí Admin' : roleID === 'R2' ? 'Quản lí bác sĩ' : ''}
+                                        </div>
+                                        <div className="logout" onClick={() => this.handleLogOut()}>Đăng xuất</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,13 +129,15 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
+        userInfo: state.user.userInfo
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         changeLanguagueApp: (language) => dispatch(changeLanguage(language)),
+        processLogout: () => dispatch(actions.processLogout()),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));

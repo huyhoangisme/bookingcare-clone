@@ -1,6 +1,7 @@
 export const adminMenu = [
     { //hệ thống
-        name: 'menu.admin.manage-user', menus: [
+        name: 'menu.admin.manage-user',
+        menus: [
             {
                 name: 'menu.admin.react-manage',
                 link: '/system/user-manage'
@@ -15,11 +16,11 @@ export const adminMenu = [
             },
             {
                 name: 'menu.admin.doctor-manage',
-                link: '/system/doctor-manage'
+                link: '/system/manage-doctor'
             },
             {
-                name: 'menu.admin.admin-manage',
-                link: '/system/admin-manage'
+                name: 'menu.admin.schedule-doctor',
+                link: '/system/doctor/manage-doctor'
             }
         ],
     },
@@ -41,4 +42,24 @@ export const adminMenu = [
             { name: 'menu.admin.hanbook-manage', link: '/system/hanbook-manage' }
         ]
     }
+];
+// memu cua doctor
+export const doctorMenu = [
+    // {
+    //     // name: 'menu.dashboard.home',
+    //     // menus: [
+    //     //     {
+    //     //         name: 'menu.dashboard.home', link: '/home'
+    //     //     }
+    //     // ]
+    // },
+    {
+        name: 'menu.doctor.manage-doctor',
+        menus: [
+            {
+                name: 'menu.doctor.doctor-schedule', link: '/system/doctor/manage-doctor'
+            }
+        ]
+    }
+
 ];

@@ -9,6 +9,18 @@
   height: 40px;
   position: relative;
   align-items: center;
+  .header-home {
+    padding:0 15px;
+    cursor: pointer;
+    i {
+      display:flex;
+      align-items: center;
+      justify-content:center;
+      font-size:30px;
+      height: 42px;
+      width: 42px;
+    }
+  }
   .header-tabs-container {
     flex: 1;
   }

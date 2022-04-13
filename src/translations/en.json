@@ -32,11 +32,13 @@
         "userpass-wrong": "Invalid username or password!"
     },
     "menu": {
-     
+        "dashboard":{
+            "home":"Home"
+        },
         "admin": {
             "manage-user": "Users",
             "redux-manage": "CRUD redux",
-            "react-manage": "CRUD react",
+            "react-manage": "Manage users",
             "doctor-manage": "Doctor management",
             "admin-manage": "Admin management",
             "doctor": "Doctor",
@@ -45,7 +47,12 @@
             "specialty":"Speciality",
             "specialty-manage":"Speciality management",
            "hanbook":"Hanbook",
-           "hanbook-manage":"Hanbook management"
+           "hanbook-manage":"Hanbook management",
+           "schedule-doctor":"Manage doctor schedule"
+        },
+        "doctor":{
+            "manage-doctor":"Manage doctor",
+            "doctor-schedule":"Manage doctor schedule"
         }
     },
     "form":{
