@@ -4,7 +4,8 @@ const initialState = {
     topDoctor: [],
     isLoading: false,
     allDoctors: [],
-    detailDoctor: {}
+    detailDoctor: {},
+    scheduleDoctor: []
 }
 
 const doctorReducer = (state = initialState, action) => {
@@ -47,12 +48,21 @@ const doctorReducer = (state = initialState, action) => {
                 ...state,
             }
         case actionTypes.FETCH_DETAIL_DOCTOR_SUCCESS:
-            console.log("success", action)
             state.detailDoctor = action.detailDoctor;
             return {
                 ...state,
             }
         case actionTypes.FETCH_DETAIL_DOCTOR_FAILED:
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_SCHEDULE_DOCTOR_SUCCESS:
+            state.scheduleDoctor = action.scheduleDoctor;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_SCHEDULE_DOCTOR_FAILED:
+            state.scheduleDoctor = [];
             return {
                 ...state,
             }

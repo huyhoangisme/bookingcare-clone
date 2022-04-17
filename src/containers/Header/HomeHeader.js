@@ -8,15 +8,23 @@ import { LANGUAGES } from '../../utils/constant'
 import { changeLanguage } from '../../store/actions'
 import { withRouter } from 'react-router-dom';
 import { path } from '../../utils'
-
-import ScheduleDoctor from '../../containers/System/doctor/ManageDoctorSchedule'
+import { emitter } from '../../utils/emitter'
+import ScheduleDoctor from '../../containers/System/doctor/ManageDoctorSchedule';
+import MenuCollapse from '../../containers/Header/MenuCollapse'
 class HomeHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             isDropDown: false,
-            roleID: 'R3'
+            roleID: 'R3',
+            isCollapsed: false,
         }
+        this.handleListenEvent()
+    }
+    handleListenEvent = () => {
+        emitter.on('EVENT_CLOSE_COLLAPSE', () => {
+            this.setState({ isCollapsed: false })
+        })
     }
     componentDidMount() {
         // console.log("ahahhahahahha", this.props.userInfo)
@@ -33,9 +41,9 @@ class HomeHeader extends React.Component {
             }
         }
     }
-    componentWillUnmount = () => {
-        console.log("ahahhahahahha un mount", this.props.userInfo)
-    }
+    // componentWillUnmount = () => {
+    //     console.log("ahahhahahahha un mount", this.props.userInfo)
+    // }
     handleChangeLanguage = (language) => {
         // GOI PROPs redux de thay doi ngon ngu
         this.props.changeLanguagueApp(language);
@@ -43,8 +51,13 @@ class HomeHeader extends React.Component {
     handleBackHomePage = () => {
         this.props.history.push('/home');
     }
-    setIsShown = () => {
-        this.setState({ isDropDown: !this.state.isDropDown, roleID: this.props.userInfo.roleId });
+    setIsShown = (event) => {
+        this.setState({ roleID: this.props.userInfo.roleId });
+        if (event === 'mouseEnter') {
+            this.setState({ isDropDown: true });
+        } else if (event === 'mouseMove') {
+            this.setState({ isDropDown: false });
+        }
     }
     handleLogOut = () => {
         this.props.processLogout();
@@ -58,8 +71,12 @@ class HomeHeader extends React.Component {
             this.props.history.push('/system/doctor/manage-doctor')
         }
     }
+    handleCollapse = () => {
+        this.setState({ isCollapsed: true });
+    }
     render() {
-        let { roleID } = this.state;
+        let { roleID, isCollapsed } = this.state;
+
         // console.log('aaaks ka', roleID);
         // const { processLogout } = this.props;
         return (
@@ -67,7 +84,9 @@ class HomeHeader extends React.Component {
                 <div className="homepage-header-container container">
                     <div className="header-content">
                         <div className="left-header">
-                            <i className="fas fa-bars"></i>
+                            <i className="fas fa-bars" data-toggle="collapse" data-target="#collapse"
+                                onClick={() => this.handleCollapse()}></i>
+                            {isCollapsed ? <MenuCollapse id="collapse" /> : ''}
                             <div className="image-logo"
                                 onClick={() => this.handleBackHomePage()}
                             ></div>
@@ -101,11 +120,10 @@ class HomeHeader extends React.Component {
                                     <span onClick={() => this.handleChangeLanguage(LANGUAGES.EN)}>EN</span>
                                 </span>
                             </div>
-                            <div className="drop-down">
-                                <i className="fas fa-user-circle" onMouseEnter={() => this.setIsShown()}
-                                ></i>
+                            <div className="drop-down" >
+                                <i className="fas fa-user-circle" onMouseEnter={() => this.setIsShown('mouseEnter')}></i>
                                 <div className={this.state.isDropDown ? 'group-drop-down active' : 'group-drop-down'}
-                                    onMouseLeave={() => this.setIsShown()}
+                                    onMouseLeave={() => this.setIsShown('mouseMove')}
                                 >
                                     <div className="group-drop">
                                         <div className="account">Tài khoản</div>

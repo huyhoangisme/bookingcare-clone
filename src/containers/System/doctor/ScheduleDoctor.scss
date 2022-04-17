@@ -1,0 +1,32 @@
+.select-doctor {
+  margin: auto;
+  .adjust-padding {
+    padding: 8px;
+  }
+  .schedule {
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    .btn-schedule {
+      padding: 6px;
+      background-color: transparent;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      &:hover {
+          background-color: #007bff;
+      }
+      &.active {
+        background-color: #fd7e14;
+        color: #333333;
+        //
+      }
+    }
+  }
+  .save-info {
+      padding-top:20px;
+      color: #333333;
+  }
+ 
+}

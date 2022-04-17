@@ -46,7 +46,7 @@ class Header extends Component {
             <div className="header-container">
                 {/* thanh navigator */}
                 {/* <FormattedMessage id="menu.dashboard.home" /> */}
-                <div className="header-home" onClick={() => this.handleRedirectHomePage()}><i className="fas fa-home"></i></div>
+                <div className="header-home" title="Home" onClick={() => this.handleRedirectHomePage()}><i className="fas fa-home"></i></div>
                 <div className="header-tabs-container">
                     <Navigator menus={this.state.userPartition === "R1" ? adminMenu : doctorMenu} />
                 </div>

@@ -72,5 +72,8 @@
         "import-email":"Please enter your email...",
         "import-password":"Please enter your password...",
         "import-phone":"Please enter your phone number..."
+    },
+    "schedule":{
+        "title":"Manage schedule for doctors"
     }
 }

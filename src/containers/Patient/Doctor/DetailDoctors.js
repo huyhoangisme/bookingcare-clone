@@ -4,6 +4,7 @@ import * as actions from '../../../store/actions'
 import HomeHeader from '../../../containers/Header/HomeHeader'
 import './DetailDoctors.scss'
 import { LANGUAGES } from '../../../utils'
+import TimeScheduleDoctor from './TimeScheduleDoctor'
 class DetailDoctors extends Component {
     constructor(props) {
         super(props)
@@ -25,7 +26,7 @@ class DetailDoctors extends Component {
     }
     render() {
         let { detailDoctor } = this.state;
-        console.log(detailDoctor)
+        console.log("detail doctor", detailDoctor)
         let imageBase64 = "";
         if (detailDoctor.image) {
             imageBase64 = new Buffer(detailDoctor.image, 'base64').toString('binary');
@@ -52,6 +53,17 @@ class DetailDoctors extends Component {
                                     <h3>{LANGUAGES.VI === this.props.language ? nameVi : nameEn}</h3>
                                 </div>
                                 {detailDoctor.Markdown.description}
+                            </div>
+                        </div>
+                        <div className="schedule-doctor">
+                            <div className="content-left">
+                                <TimeScheduleDoctor
+                                    doctorId={detailDoctor.id}
+                                // date={ }
+                                />
+                            </div>
+                            <div className="content-right">
+
                             </div>
                         </div>
                         <div className="intro-doctor">

@@ -1,0 +1,41 @@
+.time-schedule {
+  .day-exam {
+    .react-select {
+      width: 180px;
+      border: none;
+    }
+  }
+  .section-second {
+    width: 100%;
+    .title {
+      display: flex;
+      align-items: flex-end;
+      color: #333;
+
+      i {
+        padding-right: 12px;
+      }
+      h5 {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 0;
+        font-weight: bold;
+      }
+    }
+    .time-work {
+      width: 100%;
+      .selected-time {
+        margin: 16px 0;
+        button {
+          padding: 8px 6px;
+          background: #fff04b;
+          border: none;
+          font-size:15px;
+          &:hover {
+              background: #45c3d2
+          }
+        }
+      }
+    }
+  }
+}

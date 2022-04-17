@@ -71,5 +71,8 @@
         "import-email":"Nhập email của bạn...",
         "import-password":"Nhập mật khẩu của bạn...",
         "import-phone":"Nhập số điện thoại của bạn..."
+    },
+    "schedule":{
+        "title":"Quản lí kế hoạch khám bệnh của bác sĩ"
     }
 }

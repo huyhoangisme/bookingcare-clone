@@ -9,18 +9,23 @@ import MedicalFacility from '../HomePage/Section/MedicalFacility';
 import OutsandingDoctor from '../HomePage/Section/OutsandingDoctor';
 import Handbook from './Section/Handbook';
 import Footer from '../HomePage/Footer';
+import { emitter } from '../../utils/emitter'
 class HomePage extends Component {
-
+    handleClick = () => {
+        emitter.emit('EVENT_CLOSE_COLLAPSE')
+    }
     render() {
         return (
             <>
                 <HomeHeader />
-                <Banner />
-                <Speciality />
-                <MedicalFacility />
-                <OutsandingDoctor />
-                <Handbook />
-                <Footer />
+                <div onClick={() => this.handleClick()}>
+                    <Banner />
+                    <Speciality />
+                    <MedicalFacility />
+                    <OutsandingDoctor />
+                    <Handbook />
+                    <Footer />
+                </div>
                 <div style={{ height: "200px" }}></div>
             </>
         )

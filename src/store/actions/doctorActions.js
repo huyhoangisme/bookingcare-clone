@@ -1,7 +1,9 @@
 import actionTypes from './actionTypes';
 import {
-    handleGetTopDoctor, handleGetAllDoctor, handleCreateDetailDoctor, handleDetailDoctor
+    handleGetTopDoctor, handleGetAllDoctor,
+    handleCreateDetailDoctor, handleDetailDoctor,
 } from '../../services/doctorService';
+import { handleGetAllCode } from '../../services/userService'
 // import { toast } from "react-toastify";
 
 
@@ -90,6 +92,27 @@ export const fetchDetailDoctorSuccess = (data) => ({
 export const fetchDetailDoctorFailed = () => ({
     type: actionTypes.FETCH_DETAIL_DOCTOR_FAILED,
 })
+
+export const fetchScheduleDoctorStart = () => {
+    return async (dispatch) => {
+        try {
+            let res = await handleGetAllCode('TIME');
+            if (res && res.errCode === 0) {
+                dispatch(fetchScheduleDoctorSuccess(res.data))
+            } else dispatch(fetchScheduleDoctorFailed())
+        } catch (e) {
+            dispatch(fetchScheduleDoctorFailed())
+        }
+    }
+}
+export const fetchScheduleDoctorSuccess = (data) => ({
+    type: actionTypes.FETCH_SCHEDULE_DOCTOR_SUCCESS,
+    scheduleDoctor: data
+})
+export const fetchScheduleDoctorFailed = () => ({
+    type: actionTypes.FETCH_SCHEDULE_DOCTOR_FAILED,
+})
+
 
 
 
