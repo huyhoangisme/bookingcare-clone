@@ -48,7 +48,9 @@
             "specialty-manage":"Speciality management",
            "hanbook":"Hanbook",
            "hanbook-manage":"Hanbook management",
-           "schedule-doctor":"Manage doctor schedule"
+           "schedule-doctor":"Manage doctor schedule",
+           "create-specialty":"Make a specialty",
+           "create-clinic":"Create a clinic"
         },
         "doctor":{
             "manage-doctor":"Manage doctor",

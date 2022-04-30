@@ -23,8 +23,12 @@ class TimeScheduleDoctor extends Component {
         if (language === LANGUAGES.EN) {
             for (let i = 0; i < 5; i++) {
                 let object = {};
-
-                object.label = moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM');
+                if (i === 0) {
+                    let today = moment(new Date()).locale('en').format('DD/MM');
+                    object.label = `Today - ${today}`
+                } else {
+                    object.label = moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM');
+                }
                 object.value = moment(new Date()).add(i, 'days').startOf('day').valueOf();
                 result.push(object);
             }
@@ -32,7 +36,12 @@ class TimeScheduleDoctor extends Component {
         else if (language === LANGUAGES.VI) {
             for (let i = 0; i < 5; i++) {
                 let object = {};
-                object.label = moment(new Date()).add(i, 'days').format('dddd - DD/MM');
+                if (i === 0) {
+                    let today = moment(new Date()).format('DD/MM');
+                    object.label = `Hôm nay - ${today}`
+                } else {
+                    object.label = moment(new Date()).add(i, 'days').format('dddd - DD/MM');
+                }
                 object.value = moment(new Date()).add(i, 'days').startOf('day').valueOf();
                 result.push(object);
             }
@@ -94,7 +103,7 @@ class TimeScheduleDoctor extends Component {
 
                 <div className="col-6 section-second">
                     <div className="title">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i className="fas fa-calendar-alt"></i>
                         <h5>Lịch khám</h5>
                     </div>
                     <div className="time-work row">

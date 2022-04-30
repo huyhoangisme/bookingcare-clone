@@ -30,19 +30,24 @@
     // height: 100%;
     .slick-slider {
       .slider-thumbnail {
+        cursor: pointer;
         height: 100%;
         padding: 0 5px;
         .image {
-          background: url(../../assets/images/section/tieu-hoa.jpg) no-repeat
-            center center;
+          background-position: center;
+          background-repeat: no-repeat;
           background-size: cover;
           height: 180px;
         }
         .text-content {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: lighter;
           text-align: start;
-          padding: 5px 0;
+          padding: 8px 0;
+          
+        }
+        &:hover {
+          color: #45c3d2;
         }
       }
       .slick-next:before {

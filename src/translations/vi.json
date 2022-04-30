@@ -47,7 +47,9 @@
             "specialty-manage":"Quản lý chuyên khoa",
            "hanbook":"Cẩm nang",
            "hanbook-manage":"Quản lý cẩm nang",
-           "schedule-doctor":"Quản lí lịch khám bệnh cho bác sĩ"
+           "schedule-doctor":"Quản lí lịch khám bệnh cho bác sĩ",
+           "create-specialty":"Tạo một chuyên khoa",
+           "create-clinic":"Tạo một phòng khám"
         },
         "doctor":{
             "manage-doctor":"Quản lí bác sĩ",

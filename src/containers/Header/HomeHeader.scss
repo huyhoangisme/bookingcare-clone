@@ -1,6 +1,6 @@
 .homepage-header-container {
   &.container {
-    padding: 16px 8px;
+    padding: 0 8px;
   }
   padding: 12px 8px;
   .header-content {
@@ -77,7 +77,7 @@
       .drop-down {
         i {
           font-size: 40px;
-          padding: 0 20px;
+          padding: 16px 20px;
           color: #6c757d;
         }
         .group-drop-down {

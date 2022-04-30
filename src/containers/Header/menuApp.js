@@ -27,14 +27,15 @@ export const adminMenu = [
     {
         // quản lí phòng khám
         name: 'menu.admin.clinic', menus: [
-            { name: 'menu.admin.clinic-manage', link: '/system/clinic-manage' }
+            { name: 'menu.admin.clinic-manage', link: '/system/manage-clinic' },
+            { name: 'menu.admin.create-clinic', link: '/system/create-clinic' },
         ]
-
     }
     , {
         // quản lí chuyên khoa
         name: 'menu.admin.specialty', menus: [
-            { name: 'menu.admin.specialty-manage', link: '/system/specialty-manage' }
+            { name: 'menu.admin.specialty-manage', link: '/system/specialty-manage' },
+            { name: 'menu.admin.create-specialty', link: '/system/create-specialty' }
         ]
     }, {
         // quản lí cẩm nang

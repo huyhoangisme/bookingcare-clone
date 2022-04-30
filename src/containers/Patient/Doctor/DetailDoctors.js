@@ -5,6 +5,7 @@ import HomeHeader from '../../../containers/Header/HomeHeader'
 import './DetailDoctors.scss'
 import { LANGUAGES } from '../../../utils'
 import TimeScheduleDoctor from './TimeScheduleDoctor'
+import MedicalExamInfo from './MedicalExamInfo'
 class DetailDoctors extends Component {
     constructor(props) {
         super(props)
@@ -26,7 +27,6 @@ class DetailDoctors extends Component {
     }
     render() {
         let { detailDoctor } = this.state;
-        console.log("detail doctor", detailDoctor)
         let imageBase64 = "";
         if (detailDoctor.image) {
             imageBase64 = new Buffer(detailDoctor.image, 'base64').toString('binary');
@@ -59,11 +59,12 @@ class DetailDoctors extends Component {
                             <div className="content-left">
                                 <TimeScheduleDoctor
                                     doctorId={detailDoctor.id}
-                                // date={ }
                                 />
                             </div>
                             <div className="content-right">
-
+                                <MedicalExamInfo
+                                    doctorId={detailDoctor.id}
+                                />
                             </div>
                         </div>
                         <div className="intro-doctor">

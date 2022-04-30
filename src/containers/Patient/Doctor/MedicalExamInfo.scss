@@ -1,0 +1,80 @@
+.medical-exam-info-container {
+  border-left: 1px solid #eee;
+  padding: 30px 16px;
+  width: 600px;
+  .section-address {
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    padding: 6px 0;
+    .medical-title {
+      text-transform: uppercase;
+      font-size: 15px;
+      color: #666;
+      font-weight: bold;
+    }
+    .name-clinic {
+      font-weight: bold;
+      padding: 3px 0;
+      color: #000000;
+    }
+    .address-clinic {
+      padding: 3px 0;
+    }
+  }
+  .section-price {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    .text-price {
+      font-size: 15px;
+      padding:0px 4px;
+    }
+    .text-show {
+      color: #45c3d2;
+      padding-top: 8px;
+      font-size: 15px;
+      font-weight: lighter;
+      cursor: pointer;
+    }
+    .medical-title {
+      text-transform: uppercase;
+      font-size: 15px;
+      color: #666;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    .medical-price {
+      .table-price {
+        .first {
+          border: 1px solid #ddd;
+          padding: 3px 4px;
+          vertical-align: top;
+          background: #f8f8f8;
+          display: flex;
+          .first-title {
+            flex: 7;
+            p {
+                font-size: 13px;
+                color: #666666;
+            }
+          }
+          .price {
+            flex: 1;
+          }
+        }
+        .second {
+          border: 1px solid #ddd;
+          vertical-align: middle;
+          background: #eee;
+          padding: 16px 4px;
+        }
+      }
+      .text {
+        color: #45c3d2;
+        padding-top: 8px;
+        font-size: 15px;
+        font-weight: lighter;
+        cursor: pointer;
+      }
+    }
+  }
+}

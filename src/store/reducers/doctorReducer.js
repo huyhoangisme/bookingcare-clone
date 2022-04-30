@@ -1,11 +1,13 @@
 import actionTypes from '../actions/actionTypes';
-
+import { DOCTOR } from '../../utils/constant';
 const initialState = {
     topDoctor: [],
     isLoading: false,
     allDoctors: [],
     detailDoctor: {},
-    scheduleDoctor: []
+    scheduleDoctor: [],
+    listAllCode: {}
+
 }
 
 const doctorReducer = (state = initialState, action) => {
@@ -63,6 +65,16 @@ const doctorReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_SCHEDULE_DOCTOR_FAILED:
             state.scheduleDoctor = [];
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALLCODE_BY_REQUIRED_SUCCESS:
+            state.listAllCode = action.allCodeRequired;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALLCODE_BY_REQUIRED_FAILED:
+            state.listAllCode = [];
             return {
                 ...state,
             }

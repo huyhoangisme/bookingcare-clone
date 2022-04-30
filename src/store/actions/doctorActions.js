@@ -113,8 +113,33 @@ export const fetchScheduleDoctorFailed = () => ({
     type: actionTypes.FETCH_SCHEDULE_DOCTOR_FAILED,
 })
 
+// get allcode by type
 
-
-
-
-
+export const fetchAllCodeByRequiredTypeStart = () => {
+    return async (dispatch) => {
+        try {
+            let responsePrice = await handleGetAllCode('PRICE');
+            let responseCash = await handleGetAllCode('CASH');
+            let responseProvinces = await handleGetAllCode('PROVINCE');
+            if (responsePrice && responsePrice.errCode === 0
+                || responseCash && responseCash.errCode === 0
+                || responseProvinces && responseProvinces.errCode === 0) {
+                let data = {
+                    listPrice: responsePrice.data,
+                    listPayment: responseCash.data,
+                    listProvince: responseProvinces.data
+                }
+                dispatch(fetchAllCodeByRequiredTypeSuccess(data))
+            } else dispatch(fetchAllCodeByRequiredTypeFailed())
+        } catch (e) {
+            dispatch(fetchAllCodeByRequiredTypeFailed())
+        }
+    }
+}
+export const fetchAllCodeByRequiredTypeSuccess = (data) => ({
+    type: actionTypes.FETCH_ALLCODE_BY_REQUIRED_SUCCESS,
+    allCodeRequired: data
+})
+export const fetchAllCodeByRequiredTypeFailed = () => ({
+    type: actionTypes.FETCH_ALLCODE_BY_REQUIRED_FAILED,
+})

@@ -1,16 +1,20 @@
+
 .collapse-container {
   position: fixed;
   top: 0;
-  left: 0;
-  bottom: 0;
   width: 260px;
+  height: 100%;
+  left: -260px;
   border-right: 1px solid #ccc;
   background-color: #fff;
   z-index: 1000;
   font-size: 17px;
   color: #45c3d2;
   font-weight: 100;
-
+  &.active {
+    transition: left 300ms ease-out;
+    left: 0;
+  }
   .first-section {
     .text-des {
       padding: 10px 15px;

@@ -13,6 +13,12 @@ export const LANGUAGES = {
     EN: 'en'
 };
 
+export const DOCTOR = {
+    PRICE: 'PRICE',
+    PAYMENT: 'CASH',
+    PROVINCE: 'PROVINCE',
+    DOCTOR: 'DOCTOR'
+}
 export const CRUD_ACTION = {
     CREATE: "CREATE",
     READ: "READ",

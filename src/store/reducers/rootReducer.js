@@ -5,6 +5,7 @@ import appReducer from "./appReducer";
 import adminReducer from "./adminReducer";
 import userReducer from "./userReducer";
 import doctorReducer from "./doctorReducer";
+import clinicReducer from "./clinicReducer";
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
@@ -30,5 +31,6 @@ export default (history) => combineReducers({
     user: persistReducer(userPersistConfig, userReducer),
     app: persistReducer(appPersistConfig, appReducer),
     admin: adminReducer,
-    doctor: doctorReducer
+    doctor: doctorReducer,
+    clinic: clinicReducer
 })

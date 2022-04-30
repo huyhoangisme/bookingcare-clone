@@ -1,24 +1,30 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import { ConnectedRouter as Router } from 'connected-react-router';
-import { history } from '../redux'
-import { ToastContainer } from 'react-toastify';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Route, Switch } from "react-router-dom";
+import { ConnectedRouter as Router } from "connected-react-router";
+import { history } from "../redux";
+import { ToastContainer } from "react-toastify";
 
+import {
+    userIsAuthenticated,
+    userIsNotAuthenticated,
+} from "../hoc/authentication";
 
-import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
+import { path } from "../utils";
 
-import { path } from '../utils'
-
-import Home from '../routes/Home';
+import Home from "../routes/Home";
 // import Login from '../routes/Login';
-import Login from './Auth/Login';
-import System from '../routes/System';
-import HomePage from './HomePage/HomePage.js'
-import CustomScrollbars from '../components/CustomScrollbars'
-import DetailDoctor from '../containers/Patient/Doctor/DetailDoctors'
+import Login from "./Auth/Login";
+import System from "../routes/System";
+import HomePage from "./HomePage/HomePage.js";
+import CustomScrollbars from "../components/CustomScrollbars";
+import DetailDoctor from "../containers/Patient/Doctor/DetailDoctors";
+import { emitter } from "../utils/emitter";
 class App extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = { isCollapsed: false };
+    }
     handlePersistorState = () => {
         const { persistor } = this.props;
         let { bootstrapped } = persistor.getState();
@@ -36,7 +42,6 @@ class App extends Component {
     componentDidMount() {
         this.handlePersistorState();
     }
-
     render() {
         return (
             <Fragment>
@@ -45,9 +50,15 @@ class App extends Component {
                         <span className="content-container">
                             <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                                 <Switch>
-                                    <Route path={path.HOME} exact component={(Home)} />
-                                    <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={path.HOME} exact component={Home} />
+                                    <Route
+                                        path={path.LOGIN}
+                                        component={userIsNotAuthenticated(Login)}
+                                    />
+                                    <Route
+                                        path={path.SYSTEM}
+                                        component={userIsAuthenticated(System)}
+                                    />
                                     <Route path={path.HOMEPAGE} component={HomePage} />
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                                 </Switch>
@@ -66,21 +77,20 @@ class App extends Component {
                         />
                     </div>
                 </Router>
-            </Fragment >
-        )
+            </Fragment>
+        );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         started: state.app.started,
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
+const mapDispatchToProps = (dispatch) => {
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
